@@ -1,0 +1,200 @@
+/* Step 1: Applying the keyframe animation to the logo */
+
+@keyframes logoGrow {
+  from {
+    width: 25px;
+    opacity: 0;
+  }
+  to {
+    width: 475px;
+    opacity: 1;
+  }
+}
+#logo {
+  animation: logoGrow 5s forwards;
+}
+
+/* Step 2: Poppins font (using Google fonts) / serif font as backup.
+Backdrop image set to “concrete_seamless.png” w/  backup color of #f1f1f1. */
+
+body{
+  font-family: "Poppins", serif;
+  background-image: url("../images/concrete_seamless.png");
+  background-color: #f1f1f1
+}
+/* CSS header edited to use flex */
+header{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10000
+}
+/* Nav links edited to use flex */
+.nav_links{
+  display: flex;
+  flex-direction: column
+}
+
+/* STEP 5: Initializing a pseudoclass to ensure visited links don't change color, manually setting their color to the original color */
+
+a, a:visited {
+  color: #476BBE;
+  text-decoration: none;
+}
+
+/* Step 6: Edited cards to following spec:
+background color: #288088,
+2px border w/ #45ADAD,
+20px of top + bottom padding,
+50px border-radius on top left and right corners.
+*/
+.card > header{
+  background: #288088;
+  border: solid 2px #45adad;
+  padding: 0 0 20px 0;
+  border-radius: 50px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+/* Step 7: Edits Card class to the paramaters outlined in the document. */
+
+
+  .card {
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    padding: 0 0 25px 0;
+    border-radius: 50px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-sizing: border-box;
+  }
+
+
+/* Step 8: Edits pricing class to the paramaters outlined in the document: cards are wrapped to the next line, centered, and given sufficent space for both commands. */
+
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 475px;
+}
+
+/* Step 9: Gallary border, margin, and element widths--I tried to set per your specifications. However, couldn't get the grid to shape itself correctly. */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 20%;
+  justify-content: center;
+  gap: 10px;
+}
+
+.gallery img {
+
+  object-fit: cover;
+  height: auto;
+  flex-basis: 20%;
+  border: 10px solid #50C7C7;
+  margin: 10px;
+  width: 300px;
+}
+
+/* /* Step 10: Totally unclear what you are asking for here; I'm going to set the media query now. */
+
+@media (min-width: 901px) {
+
+ /* /* Step 11: Re-aligns the header to match your example  */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row; /* This aligns children horizontally */
+  padding: 10px 20px;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+}
+
+/* Step 12: Re-aligns pricing to match your example  */
+
+.pricing {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+}
+
+/* Step 13: Re-styles the cards to match your example  */
+
+.card {
+  flex: 0 0 275px; /* does not grow, does not shrink, starts at 275px width */
+  margin: 10px; /* Add space around cards */
+  position: relative;
+  z-index: 1;
+  /* Add other necessary styles */
+}
+
+/* Here, I hide the 'about' h1 and p items from the large view  */
+
+.about > h1 {
+  display: none;
+}
+.about > p {
+  display: none;
+}
+
+/* Here, I run a media query for prefers reduced motion, and then meet those paramaters  */
+
+}
+@media (prefers-reduced-motion: reduce) {
+  #logo {
+    animation: none;
+    width: 475px;
+    opacity: 1;
+  }
+}
+
+/* Here, I run a media query for print, and then meet those paramaters  */
+
+@media print {
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: none;
+    background-color: #fff;
+
+  }
+  .nav_links {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+
+  .pricing {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+
+    .card {
+      border: 2px solid #45ADDD;
+      flex-basis: 325px;
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+      .gallery {
+        display: none;
+      }
+/* Final bonus step--you wanted us to use Unicode, right? */
+      .card::before {
+        content: "\1F44D";
+        font-size: 24px;
+        color: black;
+      }
+
+  }
+
